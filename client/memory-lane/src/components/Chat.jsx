@@ -11,7 +11,7 @@ function Chat() {
   } = useSpeechRecognition();
 
 
-  const API_URL = "https://example.com/api/messages";
+  const API_URL = "http://127.0.0.1:5000/text-to-speech";
 
   const sendMessage = async (message) => {
     try {
@@ -43,7 +43,7 @@ function Chat() {
             <button onClick={startListening}>Start listening</button>
             {isListining ? <p>The app is currently using your mic</p> : null}
             <p>{text}</p>
-            { text ? <button onClick={sendMessage(text)}>Send message?</button> : null }
+            { text ? <button onClick={() => sendMessage(text)}>Send message?</button> : null }
           </div>
         </>
       ) : <h1>No microphone support on this browser sorry</h1>}

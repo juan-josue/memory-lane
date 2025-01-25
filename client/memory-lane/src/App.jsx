@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <div>
-        <h1 class="text-3xl font-bold underline">Welcome to a trip down memory lane!</h1>
         <Chat />
       </div>
     </>
