@@ -27,7 +27,7 @@ def textToSpeech():
 
     response = client.audio.speech.create(
         model="tts-1",
-        voice="alloy",
+        voice="echo",
         input=message,
     )
     
