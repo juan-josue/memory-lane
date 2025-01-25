@@ -28,7 +28,7 @@ function Chat() {
         const data = await response.json();
         console.log("Data from backend: ", data);
       } else {
-        console.error("Failed to send message");
+        console.error("Failed to send message", response);
       }
     } catch (error) {
       console.error("Error sending message:", error);

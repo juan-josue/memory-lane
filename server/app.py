@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from pathlib import Path
 from openai import OpenAI
 import os
@@ -14,31 +14,39 @@ app = Flask(__name__)
 # Enable CORS for all routes
 CORS(app)
 
-
 # File path for saving the generated audio
 speech_file_path = Path(__file__).parent / "speech.mp3"
 
 # Input audio and receive gen AI response
 @app.route('/text-to-speech', methods=['POST'])
+@cross_origin()
 def textToSpeech():
     # Parse the incoming JSON data
     data = request.get_json()
     message = data.get('message', '')
+    
+    completion = client.chat.completions.create(
+        model="gpt-4o",
+        store=True,
+        messages=[
+            {"role": "system", "content": "You are tasked with facilitating reminiscence therapy as a care taker for dementia patients. Kindly ask your patient questions to recall events from their life, you will be given a moment from their life."},
+            {"role": "user", "content": message}
+        ]
+    )
+    response = completion.choices[0].message.content
 
-    response = client.audio.speech.create(
+    audio = client.audio.speech.create(
         model="tts-1",
         voice="echo",
-        input=message,
+        input=response,
     )
     
-    response.stream_to_file("output.mp3")
+    audio.stream_to_file("speech.mp3")
 
-    # Save the audio data to a file
-    # with open(speech_file_path, "wb") as audio_file:
-    #     audio_file.write(response.audio_data)
 
     # Return a success response
-    return jsonify({"reply": f"You said: {message}", "file_saved": str(speech_file_path)}), 200
+    response = jsonify({"reply": f"{str(response)}", "file_saved": str(speech_file_path)}), 200
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
