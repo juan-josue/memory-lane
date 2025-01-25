@@ -5,9 +5,11 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 
+messages = []
+
 load_dotenv()
 key = os.getenv("OPENAI_API_KEY")
-client = OpenAI(api_key=key)  # Ensure you have the `openai` package installed
+client = OpenAI(api_key=key)
 
 app = Flask(__name__)
 
@@ -15,7 +17,8 @@ app = Flask(__name__)
 CORS(app)
 
 # File path for saving the generated audio
-speech_file_path = Path(__file__).parent / "speech.mp3"
+speech_file_name = "speech" + str(len(messages)) + ".mp3"
+speech_file_path = Path(__file__).parent / speech_file_name
 intro_file_path = Path(__file__).parent / "intro.mp3"
 
 # Input audio and receive gen AI response
@@ -26,11 +29,15 @@ def textToSpeech():
     data = request.get_json()
     message = data.get('message', '')
     
+    # Keep track of all messages sent
+    messages.append(message)
+    
     completion = client.chat.completions.create(
         model="gpt-4o",
         store=True,
         messages=[
             {"role": "system", "content": "You are tasked with facilitating reminiscence therapy as a care taker for dementia patients. Kindly ask your patient questions to recall events from their life, you will be given a moment from their life."},
+            {"role": "system", "content": "Here are the patients past messages with you: " + "/".join(messages)},
             {"role": "user", "content": message}
         ]
     )
@@ -40,9 +47,10 @@ def textToSpeech():
         model="tts-1",
         voice="echo",
         input=response,
+        speed=1.5,
     )
     
-    audio.stream_to_file("speech.mp3")
+    audio.stream_to_file("speech" + str(len(messages)) + ".mp3")
 
 
     # Return a success response
@@ -52,7 +60,12 @@ def textToSpeech():
 # Endpoint to serve the audio file
 @app.route('/get-audio', methods=['GET'])
 def getAudio():
-    return send_file(speech_file_path, as_attachment=False)
+    speech_file_name = "speech" + str(len(messages)) + ".mp3"
+    print("sendinging mp3: ", speech_file_name)
+    speech_file_path = Path(__file__).parent / speech_file_name
+    response = send_file(speech_file_path, as_attachment=False)
+    # response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    return response
 
 # Endpoint to serve the audio file
 @app.route('/get-intro', methods=['GET'])

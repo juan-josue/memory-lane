@@ -21,9 +21,22 @@ function Chat() {
 
   const API_URL = "http://127.0.0.1:5000/text-to-speech";
 
+  function makeid(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
   const sendMessage = async (message) => {
     try {
-      const response = await fetch(API_URL, {
+      const randomized_URL = API_URL + "?" + makeid(10);
+      const response = await fetch(randomized_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +49,7 @@ function Chat() {
         console.log("Data from backend: ", data);
 
         // Play the audio automatically
-        const audioUrl = "http://127.0.0.1:5000/get-audio";
+        const audioUrl = "http://127.0.0.1:5000/get-audio" + "?" + makeid(10);;
         const audio = new Audio(audioUrl);
         audio.play();
 
