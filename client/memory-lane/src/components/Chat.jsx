@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import useSpeechRecognition from "../hooks/speechRecognitionHook";
 
 function Chat() {
-  const [messages, setMessages] = useState([{ text: "First message" }, { text: "Second message" }]);
-  const [input, setInput] = useState("");
+  const {
+    text,
+    startListening,
+    stopListening,
+    isListining,
+    hasRecognitionSupport
+  } = useSpeechRecognition();
+
 
   const API_URL = "https://example.com/api/messages";
 
@@ -18,7 +25,7 @@ function Chat() {
 
       if (response.ok) {
         const data = await response.json();
-        setMessages((prev) => [...prev, { id: data.id, text: data.message }]);
+        console.log("Data from backend: ", data)
       } else {
         console.error("Failed to send message");
       }
@@ -27,27 +34,19 @@ function Chat() {
     }
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key == "Enter" && input.trim()) {
-      sendMessage(input.trim());
-      setInput("");
-    }
-  };
 
   return (
     <>
-      <div>
-        {messages.map((msg, index) => (
-          <div key={index}>{msg.text}</div>
-        ))}
-      </div>
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Share your story..."
-      />
+      { hasRecognitionSupport ? (
+        <>
+          <div>
+            <button onClick={startListening}>Start listening</button>
+            {isListining ? <p>The app is currently using your mic</p> : null}
+            <p>{text}</p>
+            { text ? <button onClick={sendMessage(text)}>Send message?</button> : null }
+          </div>
+        </>
+      ) : <h1>No microphone support on this browser sorry</h1>}
     </>
   );
 }
