@@ -16,6 +16,7 @@ CORS(app)
 
 # File path for saving the generated audio
 speech_file_path = Path(__file__).parent / "speech.mp3"
+intro_file_path = Path(__file__).parent / "intro.mp3"
 
 # Input audio and receive gen AI response
 @app.route('/text-to-speech', methods=['POST'])
@@ -52,6 +53,11 @@ def textToSpeech():
 @app.route('/get-audio', methods=['GET'])
 def getAudio():
     return send_file(speech_file_path, as_attachment=False)
+
+# Endpoint to serve the audio file
+@app.route('/get-intro', methods=['GET'])
+def getIntro():
+    return send_file(intro_file_path, as_attachment=False)
 
 if __name__ == '__main__':
     app.run(debug=True)

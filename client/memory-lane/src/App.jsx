@@ -6,10 +6,22 @@ import Chat from "./components/Chat";
 function App() {
   const [begin, setBegin] = useState(false);
 
+  const handleClick = () => {
+    const audioUrl = "http://127.0.0.1:5000/get-intro";
+    const audio = new Audio(audioUrl);
+    audio.play();
+    setBegin(true)
+  };
+
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center p-10"> 
+    <div className="w-screen h-screen flex flex-col items-center justify-center p-10">
       {!begin ? (
-        <button className="w-[220px] p-3 bg-black rounded text-white" onClick={() => setBegin(true)}>Let's Begin Our Session</button>
+        <button
+          className="w-[220px] p-3 bg-black rounded text-white"
+          onClick={handleClick}
+        >
+          Let's Begin Our Session
+        </button>
       ) : (
         <Chat />
       )}

@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMicrophone } from "@fortawesome/free-solid-svg-icons";
 
 function Chat() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      role: "system",
+      content:
+        "Hi there! Welcome to memory lane's reminiscence therapy. We’ll discuss moments from your life—like favourite memories or places—to help you feel better and connected. Just share a thought, and we’ll get started!",
+    },
+  ]);
   const {
     text,
     startListening,
