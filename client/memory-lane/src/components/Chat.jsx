@@ -39,14 +39,15 @@ function Chat() {
     <>
       {hasRecognitionSupport ? (
         <>
-          <div>
+          <div className="flex flex-col gap-10 justify-center items-center">
             <button className="rounded-full bg-black w-40 h-40" onClick={startListening}>
               <FontAwesomeIcon className="text-white text-5xl" icon={faMicrophone} />
             </button>
-            {isListining ? <p>The app is currently using your mic</p> : null}
-            <p>{text}</p>
+            {isListining ? <p className="bg-gray-100 p-3 w-[300px] rounded text-center">The app is using your micmic❗️</p> : null}
+            
             {text ? (
-              <button onClick={() => sendMessage(text)}>Send message?</button>
+              <p className="flex gap-10 p-3 items-center bg-gray-100 rounded">{text} <button className='p-3 w-[100px] bg-black text-white rounded' onClick={() => sendMessage(text)}>Send</button></p>
+              
             ) : null}
           </div>
         </>
