@@ -27,6 +27,11 @@ function Chat() {
       if (response.ok) {
         const data = await response.json();
         console.log("Data from backend: ", data);
+
+        // Play the audio automatically
+        const audioUrl = "http://127.0.0.1:5000/get-audio";
+        const audio = new Audio(audioUrl);
+        audio.play();
       } else {
         console.error("Failed to send message", response);
       }

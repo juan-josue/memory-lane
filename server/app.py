@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS, cross_origin
 from pathlib import Path
 from openai import OpenAI
@@ -45,8 +45,13 @@ def textToSpeech():
 
 
     # Return a success response
-    response = jsonify({"reply": f"{str(response)}", "file_saved": str(speech_file_path)}), 200
+    response = jsonify({"reply": f"{str(response)}", "file_url": '/get-audio'}), 200
     return response
+
+# Endpoint to serve the audio file
+@app.route('/get-audio', methods=['GET'])
+def getAudio():
+    return send_file(speech_file_path, as_attachment=False)
 
 if __name__ == '__main__':
     app.run(debug=True)
