@@ -3,7 +3,7 @@ import useSpeechRecognition from "../hooks/speechRecognitionHook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMicrophone } from "@fortawesome/free-solid-svg-icons";
 
-function Chat() {
+function Chat({ onEnd }) {
   const [messages, setMessages] = useState([
     {
       role: "system",
@@ -106,9 +106,21 @@ function Chat() {
                   >
                     Send
                   </button>
+                  
+                  <button
+                    className="p-3 w-[150px] bg-black text-white rounded"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onEnd();
+                    }}
+                  >
+                    End Session
+                  </button>
                 </p>
               ) : null}
+
             </div>
+
             <div className="w-1/2">
               <div className="flex flex-col gap-10 bg-gray-100 p-10 rounded-xl max-h-100 overflow-y-auto">
                 {messages.map((message, index) => {
