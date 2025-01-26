@@ -10,7 +10,7 @@ function Narrative() {
   useEffect(() => {
     const fetchNarrative = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:5000/get-narrative", {
+        const response = await fetch("https://memory-lane-a4e9.onrender.com/get-narrative", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -50,7 +50,7 @@ function Narrative() {
 
             
             <div className="  w-190 h-100  overflow-">
-              <img src="../../public/fisherman.webp" alt="Image not loading..." className="rounded"></img>
+              <img src="/fisherman.webp" alt="Image not loading..." className="rounded"></img>
             </div>
             <div className=" mt-10 w-190 h-40 overflow-">
               <Slide body={narrative[chapterNumber]} />

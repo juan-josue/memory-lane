@@ -19,7 +19,7 @@ function Chat({ onEnd }) {
     hasRecognitionSupport,
   } = useSpeechRecognition();
 
-  const API_URL = "http://127.0.0.1:5000/text-to-speech";
+  const API_URL = "https://memory-lane-a4e9.onrender.com/text-to-speech";
 
   function makeid(length) {
     let result = "";
@@ -50,7 +50,7 @@ function Chat({ onEnd }) {
         console.log("Data from backend: ", data);
 
         // Play the audio automatically
-        const audioUrl = "http://127.0.0.1:5000/get-audio" + "?" + makeid(10);
+        const audioUrl = "https://memory-lane-a4e9.onrender.com/get-audio" + "?" + makeid(10);
         const audio = new Audio(audioUrl);
         audio.play();
 

@@ -42,7 +42,7 @@ function App() {
         <>
           <h1 className="text-3xl font-bold">Memory Lane</h1>
           <img
-            src="../../public/logo.png"
+            src="/logo.png"
             alt="Image not loading..."
             className="rounded w-[100px] h-[100px] mb-[100px]"
           ></img>
