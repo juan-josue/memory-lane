@@ -4,6 +4,7 @@ from pathlib import Path
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 messages = []
 
@@ -64,13 +65,34 @@ def getAudio():
     print("sendinging mp3: ", speech_file_name)
     speech_file_path = Path(__file__).parent / speech_file_name
     response = send_file(speech_file_path, as_attachment=False)
-    # response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
     return response
 
 # Endpoint to serve the audio file
 @app.route('/get-intro', methods=['GET'])
 def getIntro():
     return send_file(intro_file_path, as_attachment=False)
+
+# custom return type
+class Narrative(BaseModel):
+    chapters: list[str]
+
+# Endpoint to serve the audio file
+@app.route('/get-narrative', methods=['GET'])
+def getNarrative():
+    completion = client.beta.chat.completions.parse(
+        model="gpt-4o",
+        store=True,
+        messages=[
+            {"role": "system", "content": "Here are the patients past messages with you: " + " ".join(messages)},
+            {"role": "user", "content": "Craft a concise recap broken into distinct events/chapters essentially recapping the coversation. Your response for each chapter should be 2 sentences. Keep it concise. Keep the number of chapters low. Dot not title each section just give me the body text."}
+        ],
+        response_format=Narrative,
+    )
+    response = completion.choices[0].message.content
+    
+    # Return a success response
+    response = jsonify({"chapters": response}), 200
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
