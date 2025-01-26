@@ -72,26 +72,23 @@ def getAudio():
 def getIntro():
     return send_file(intro_file_path, as_attachment=False)
 
-# custom return type
-class Narrative(BaseModel):
-    chapters: list[str]
-
 # Endpoint to serve the audio file
 @app.route('/get-narrative', methods=['GET'])
 def getNarrative():
-    completion = client.beta.chat.completions.parse(
+    completion = client.chat.completions.create(
         model="gpt-4o",
         store=True,
         messages=[
-            {"role": "system", "content": "Here are the patients past messages with you: " + " ".join(messages)},
-            {"role": "user", "content": "Craft a concise recap broken into distinct events/chapters essentially recapping the coversation. Your response for each chapter should be 2 sentences. Keep it concise. Keep the number of chapters low. Dot not title each section just give me the body text."}
+            {"role": "system", "content": "Here are the patients past messages with you: " + "--".join(messages)},
+            {"role": "user", "content": "summary description: You are a compassionate storyteller and reminiscence therapist. Your task is to craft a deeply personal and heartfelt narrative based on the provided memories and experiences below. Write in a warm, conversational tone, as if you’re speaking directly to the individual. Highlight moments of joy, pride, love, and connection, focusing on the emotions and the essence of the memories rather than just the facts. However, you want to make sure to keep it concise, two sentences per subject. Where details are missing, gently explore the feelings or broader themes, keeping the narrative meaningful, relatable and concise. Reflect the person’s unique perspective and make it feel like their story, celebrating their resilience, growth, and the little things that bring them happiness. The final story should feel comforting, affirming, and deeply personal, as though it were written just for them. You must serperate story sections with -- symbols."}
         ],
-        response_format=Narrative,
     )
     response = completion.choices[0].message.content
     
+    chapters = response.split("--")
+    
     # Return a success response
-    response = jsonify({"chapters": response}), 200
+    response = jsonify({ "chapters": chapters }), 200
     return response
 
 if __name__ == '__main__':
