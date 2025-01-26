@@ -47,7 +47,7 @@ def textToSpeech():
         model="tts-1",
         voice="echo",
         input=response,
-        speed=1.5,
+        speed=1.2,
     )
     
     audio.stream_to_file("speech" + str(len(messages)) + ".mp3")

@@ -8,22 +8,23 @@ function Chat() {
     {
       role: "system",
       content:
-        "Hi there! Welcome to memory lane's reminiscence therapy. We’ll discuss moments from your life—like favourite memories or places—to help you feel better and connected. Just share a thought, and we’ll get started!",
+        "Hi there! Welcome to memory lane's reminiscence therapy. We’ll discuss moments from your life—like favourite memories or places—to help you feel better and connected. What's one of your favourite memories or a special place that brings you joy?",
     },
   ]);
   const {
     text,
     startListening,
     stopListening,
-    isListining,
+    isListening,
     hasRecognitionSupport,
   } = useSpeechRecognition();
 
   const API_URL = "http://127.0.0.1:5000/text-to-speech";
 
   function makeid(length) {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
     let counter = 0;
     while (counter < length) {
@@ -31,7 +32,7 @@ function Chat() {
       counter += 1;
     }
     return result;
-}
+  }
 
   const sendMessage = async (message) => {
     try {
@@ -49,7 +50,7 @@ function Chat() {
         console.log("Data from backend: ", data);
 
         // Play the audio automatically
-        const audioUrl = "http://127.0.0.1:5000/get-audio" + "?" + makeid(10);;
+        const audioUrl = "http://127.0.0.1:5000/get-audio" + "?" + makeid(10);
         const audio = new Audio(audioUrl);
         audio.play();
 
@@ -73,16 +74,24 @@ function Chat() {
         <>
           <div className="flex flex-row gap-10 w-full justify-center items-center">
             <div className="flex flex-col gap-10 justify-center items-center w-1/2">
-              <button
-                className="rounded-full bg-black w-40 h-40"
-                onClick={startListening}
-              >
-                <FontAwesomeIcon
-                  className="text-white text-5xl"
-                  icon={faMicrophone}
-                />
-              </button>
-              {isListining ? (
+              <div className="relative h-50 w-50">
+                {isListening && (
+                  <div
+                    className="animate-spin blur-lg rounded-full bg-gradient-to-bl from-violet-500 to-fuchsia-500 w-50 h-50 absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0"
+                  ></div>
+                )}
+                <button
+                  className="rounded-full bg-black w-40 h-40 relative z-10 inset-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                  onClick={startListening}
+                >
+                  <FontAwesomeIcon
+                    className="text-white text-5xl"
+                    icon={faMicrophone}
+                  />
+                </button>
+              </div>
+
+              {isListening ? (
                 <p className="bg-gray-100 p-3 w-[300px] rounded text-center">
                   The app is using your micmic❗️
                 </p>

@@ -7,9 +7,9 @@ function App() {
   const [begin, setBegin] = useState(false);
 
   const handleClick = () => {
-    // const audioUrl = "http://127.0.0.1:5000/get-intro";
-    // const audio = new Audio(audioUrl);
-    // audio.play();
+    const audioUrl = "http://127.0.0.1:5000/get-intro";
+    const audio = new Audio(audioUrl);
+    audio.play();
     setBegin(true)
   };
 

@@ -9,7 +9,7 @@ if ("webkitSpeechRecognition" in window) {
 
 const useSpeechRecognition = () => {
   const [text, setText] = useState("");
-  const [isListining, setIsListining] = useState(false);
+  const [isListening, setIsListening] = useState(false);
 
   useEffect(() => {
     if (!recognition) return;
@@ -18,24 +18,24 @@ const useSpeechRecognition = () => {
       console.log("event result: ", event);
       setText(event.results[0][0].transcript)
       recognition.stop();
-      setIsListining(false);
+      setIsListening(false);
     };
   }, []);
 
   const startListening = () => {
     setText("");
-    setIsListining(true);
+    setIsListening(true);
     recognition.start();
   };
 
   const stopListening = () => {
-    setIsListining(false);
+    setIsListening(false);
     recognition.stop();
   };
 
   return {
     text,
-    isListining,
+    isListening,
     startListening,
     stopListening,
     hasRecognitionSupport: !!recognition,
