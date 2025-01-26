@@ -12,7 +12,7 @@ function App() {
     // const audioUrl = "http://127.0.0.1:5000/get-intro";
     // const audio = new Audio(audioUrl);
     // audio.play();
-    setBegin(true)
+    setBegin(true);
   };
 
   const handleEnd = () => {
@@ -22,16 +22,32 @@ function App() {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center p-10">
       {!begin ? (
-        <button
-          className="w-[220px] p-3 bg-black rounded text-white"
-          onClick={handleClick}
-        >
-          Let's Begin Our Session
-        </button>
+        <>
+          <h1 className="text-5xl font-bold">Memory Lane</h1>
+          <img
+            src="../../public/logo.png"
+            alt="Image not loading..."
+            className="rounded w-[300px] h-[300px]"
+          ></img>
+          <button
+            className="w-[220px] p-3 bg-black rounded text-white"
+            onClick={handleClick}
+          >
+            Let's Begin Our Session
+          </button>
+        </>
       ) : end ? (
         <Narrative />
       ) : (
-        <Chat onEnd={handleEnd} />
+        <>
+          <h1 className="text-3xl font-bold">Memory Lane</h1>
+          <img
+            src="../../public/logo.png"
+            alt="Image not loading..."
+            className="rounded w-[100px] h-[100px] mb-[100px]"
+          ></img>
+          <Chat onEnd={handleEnd} />
+        </>
       )}
     </div>
   );
