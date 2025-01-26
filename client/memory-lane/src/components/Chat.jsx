@@ -93,7 +93,7 @@ function Chat({ onEnd }) {
 
               {isListening ? (
                 <p className="bg-gray-100 p-3 w-[300px] rounded text-center">
-                  The app is using your micmic❗️
+                  The app is using your mic❗️
                 </p>
               ) : null}
 
