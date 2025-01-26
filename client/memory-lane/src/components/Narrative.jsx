@@ -44,10 +44,21 @@ function Narrative() {
   return (
     <div>
       {narrative.length > 0 ? (
-        <div>
-          <button onClick={handlePrev}><FontAwesomeIcon icon={faArrowLeft} /></button>
-          <Slide body={narrative[chapterNumber]} />
-          <button onClick={handleNext}><FontAwesomeIcon icon={faArrowRight} /></button>
+        <div className="  flex flex-row items-center justify-center bg-[url('')]  bg-no-repeat bg-center bg-cover">
+          <button className='  p-30 text-[100px] ' onClick={handlePrev}><FontAwesomeIcon icon={faArrowLeft} /></button>
+          <div className=" flex flex-col">
+
+            
+            <div className="  w-190 h-100  overflow-">
+              <img src="../../public/fisherman.webp" alt="Image not loading..." className="rounded"></img>
+            </div>
+            <div className=" mt-10 w-190 h-40 overflow-">
+              <Slide body={narrative[chapterNumber]} />
+            </div>
+            
+
+          </div>
+          <button className='p-30 text-[100px] ' onClick={handleNext}><FontAwesomeIcon icon={faArrowRight} /></button>
         </div>
       ) : null}
     </div>
