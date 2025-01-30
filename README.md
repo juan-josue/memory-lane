@@ -14,10 +14,10 @@ Memory Lane addresses the critical shortage of care home volunteers for dementia
 - Speech Integration: Implements text-to-speech and speech-to-text technologies for enhanced communication.
 
 **Demo**  
-Experience Memory Lane in action:
-Try It Out: atripdownmemorylane.co
+Experience Memory Lane in action:  
+Try It Out: [Memory Lane Demo](https://atripdownmemorylane.co)
 
-Learn More: Devpost - https://devpost.com/software/memory-lane-pa6cqu
+Learn More: Devpost - [Devpost](https://devpost.com/software/memory-lane-pa6cqu)
 
 **Built With**
 - ReactJS - Front-end framework
@@ -40,9 +40,9 @@ QHacks: Special thanks to QHacks for providing the platform and mentorship that 
 
 **Contact**  
 For any inquiries or feedback, please reach out to:  
-Juan Gutierrez - https://www.linkedin.com/in/juangutierrez/  
-Aryan Aggarwal - https://www.linkedin.com/in/aryan-aggarwal-/  
-Aaliyah Pirani - https://www.linkedin.com/in/aaliyah-pirani-b1887b280/  
-Brian Su - https://www.linkedin.com/in/brian-su-70990a24a/
+Juan Gutierrez - [LinkedIn](https://www.linkedin.com/in/juangutierrez/)  
+Aryan Aggarwal - [LinkedIn](https://www.linkedin.com/in/aryan-aggarwal-/)  
+Aaliyah Pirani - [LinkedIn](https://www.linkedin.com/in/aaliyah-pirani-b1887b280/)  
+Brian Su - [LinkedIn](https://www.linkedin.com/in/brian-su-70990a24a/)
 
 Connect with us on GitHub or visit our project page for more information.
