@@ -15,7 +15,7 @@ Memory Lane addresses the critical shortage of care home volunteers for dementia
 
 **Demo**  
 Experience Memory Lane in action:  
-Try It Out: [Memory Lane Demo](https://atripdownmemorylane.co)
+Try It Out: [Memory Lane Demo](https://atripdownmemorylane.co)  
 Learn More: Devpost - [Devpost](https://devpost.com/software/memory-lane-pa6cqu)
 
 **Pictures**  
