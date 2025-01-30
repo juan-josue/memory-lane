@@ -20,10 +20,10 @@ Try It Out: [Memory Lane Demo](https://atripdownmemorylane.co)
 Learn More: Devpost - [Devpost](https://devpost.com/software/memory-lane-pa6cqu)
 
 **Pictures**  
-![Home Page](https://devpost.com/software/memory-lane-pa6cqu?ref_content=my-projects-tab&ref_feature=my_projects)  
-![Chatting with Memory Lane](https://devpost.com/software/memory-lane-pa6cqu?ref_content=my-projects-tab&ref_feature=my_projects)  
-![Sending a Chat/Ending the Session](https://devpost.com/software/memory-lane-pa6cqu?ref_content=my-projects-tab&ref_feature=my_projects)  
-![Generating a Narrative](https://devpost.com/software/memory-lane-pa6cqu?ref_content=my-projects-tab&ref_feature=my_projects)
+![Home Page](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/232/550/datas/original.png)  
+![Chatting with Memory Lane](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/232/552/datas/original.png)  
+![Sending a Chat/Ending the Session](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/232/676/datas/original.png)  
+![Generating a Narrative](https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/003/232/553/datas/original.png)
 
 **Built With**
 - ReactJS - Front-end framework
