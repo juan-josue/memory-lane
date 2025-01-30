@@ -2,7 +2,7 @@
 
 Memory Lane is an innovative application designed to support caregivers and enhance the emotional well-being of dementia patients through AI-driven reminiscence therapy and narrative storytelling.
 
-**Overview**
+**Overview**  
 Memory Lane addresses the critical shortage of care home volunteers for dementia patients by combining artificial intelligence with narrative storytelling. The app facilitates meaningful conversations, helping patients recall and share cherished memories while reducing the workload for caregivers. By generating personalized emotional narratives and AI-created images, Memory Lane strengthens the emotional connections between patients and their memories.
 
 **Features**
@@ -13,7 +13,7 @@ Memory Lane addresses the critical shortage of care home volunteers for dementia
 - Language Detection: Automatically detects user language for a seamless experience.
 - Speech Integration: Implements text-to-speech and speech-to-text technologies for enhanced communication.
 
-**Demo**
+**Demo**  
 Experience Memory Lane in action:
 Try It Out: atripdownmemorylane.co
 
@@ -28,7 +28,7 @@ Learn More: Devpost - https://devpost.com/software/memory-lane-pa6cqu
 - JavaScript - Programming language
 - Python - Programming language
 
-**Contributors**
+**Contributors**  
 Juan Gutierrez - Front-end, Backend, Team Lead  
 Aryan Aggarwal - Backend, OpenAI API Integration  
 Aaliyah Pirani - Backend, OpenAI API Integration  
