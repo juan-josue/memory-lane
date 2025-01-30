@@ -19,6 +19,9 @@ Try It Out: [Memory Lane Demo](https://atripdownmemorylane.co)
 
 Learn More: Devpost - [Devpost](https://devpost.com/software/memory-lane-pa6cqu)
 
+**Pictures**
+![Photo1](https://devpost.com/software/memory-lane-pa6cqu?ref_content=my-projects-tab&ref_feature=my_projects "a title")
+
 **Built With**
 - ReactJS - Front-end framework
 - Flask - Backend framework
