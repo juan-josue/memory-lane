@@ -20,13 +20,13 @@ Try It Out: atripdownmemorylane.co
 Learn More: Devpost - https://devpost.com/software/memory-lane-pa6cqu
 
 Built With
-ReactJS - Front-end framework
-Flask - Backend framework
-OpenAI API - Text-to-speech and generative text functionalities
-DALL-E 3 - Image generation
-Tailwind CSS - Styling framework
-JavaScript - Programming language
-Python - Programming language
+- ReactJS - Front-end framework
+- Flask - Backend framework
+- OpenAI API - Text-to-speech and generative text functionalities
+- DALL-E 3 - Image generation
+- Tailwind CSS - Styling framework
+- JavaScript - Programming language
+- Python - Programming language
 
 Contributors
 Juan Gutierrez - Front-end, Backend, Team Lead
